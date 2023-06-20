@@ -1,0 +1,23 @@
+.container{
+    width: 100%;
+    display: flex;
+    
+}
+.image-container{
+width: 80%;
+padding: 10px 0px;
+
+}
+.content-container{
+width: 20%;
+padding: 100px 0px;
+background-color: black;
+color: aliceblue;
+text-align: center;
+height: 500px;
+margin-top: 50px;
+}
+.image-container img {
+width: 40%;
+margin: 5px;
+}

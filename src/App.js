@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext } from 'react';
+import { useState } from 'react';
+import HomePage from './Component/HomePage';
+import CartPage from './Component/CartPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DetailPage from './Component/DetailPage';
+import NavBar from './Component/NavBar';
 
+export const myConext = createContext()
 function App() {
+  const [cart, setCart] = useState([])
+  const [data,setData] =useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <myConext.Provider value={{cart, setCart,data,setData}}>
+        <BrowserRouter>
+        <NavBar/>
+          <Routes>
+            <Route path='/' element={<HomePage />}></Route>
+            <Route path='/cart' element={<CartPage />}></Route>
+            <Route path='/detail/:parameter' element={<DetailPage/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </myConext.Provider>
     </div>
   );
 }
